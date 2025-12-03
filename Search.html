@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - StreamFlix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="search-style.css">
+</head>
+<body>
+    <div class="search-results-container">
+        <!-- Search Header -->
+        <div class="search-header">
+            <a href="main-movie-page.html" class="back-button">← Back to Browse</a>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search movies..." class="search-input">
+                <button onclick="performSearch()" class="search-btn">Search</button>
+            </div>
+        </div>
+
+        <!-- Results Info and Filters -->
+        <div class="results-top">
+            <div class="results-info">
+                <h1>Search Results</h1>
+                <p id="resultsCount">Enter a search term</p>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sortSelect" onchange="sortResults()" class="filter-select">
+                        <option value="relevance">Relevance</option>
+                        <option value="year">Year (Newest)</option>
+                        <option value="year_old">Year (Oldest)</option>
+                        <option value="rating">Rating</option>
+                        <option value="title">Title A-Z</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Genre:</label>
+                    <select id="genreSelect" onchange="filterResults()" class="filter-select">
+                        <option value="all">All Genres</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Results Layout -->
+        <div class="results-layout">
+            <!-- Selected Movie Details (Left Side) -->
+            <div class="movie-details-panel" id="movieDetails">
+                <div class="details-placeholder">
+                    <h3>Select a movie to view details</h3>
+                    <p>Click on any movie poster to see its information here</p>
+                </div>
+            </div>
+
+            <!-- Movie Grid (Right Side) -->
+            <div class="results-grid-container">
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Search results will be loaded here -->
+                </div>
+
+                <div class="load-more" id="loadMore" style="display: none;">
+                    <button onclick="loadMoreResults()" class="load-more-btn">Load More Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="search-script.js"></script>
+    <script src="avatar-manager.js"></script>
+</body>
+</html>
