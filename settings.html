@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - StreamStack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings-style.css">
+    <link rel="stylesheet" href="main-page.css">
+</head>
+<body>
+    <!-- Add the same header from main page -->
+    <div class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="StreamStack Logo" class="logo-image">
+            <div class="logo">StreamStack</div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-bar" id="mainSearchInput" placeholder="Search movies...">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+        </div> <!-- CLOSE header-center -->
+        
+        <div class="header-controls">
+            <!-- Profile Icon -->
+            <div class="profile-icon" onclick="toggleProfilePanel()">
+                <div class="profile-avatar">U</div>
+            </div>
+        </div>
+    </div> <!-- CLOSE main-header -->
+
+    <!-- Add the same profile panel from main page -->
+    <div class="profile-panel" id="profilePanel">
+        <div class="profile-header">
+            <button class="close-profile" onclick="toggleProfilePanel()">×</button>
+            <h2>Account</h2>
+        </div>
+        
+        <div class="profile-content">
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div class="user-details">
+                    <h3 class="user-name" id="panelUserName">User Name</h3>
+                    <p class="user-email" id="panelUserEmail">user@email.com</p>
+                </div>
+            </div>
+            
+            <div class="profile-menu">
+                <a href="main-movie-page.html" class="menu-item">
+                    <span class="menu-icon">🏠</span>
+                    Home    
+                </a>
+
+                <a href="watchlist.html" class="menu-item">
+                    <span class="menu-icon">📋</span>
+                    My Watchlist
+                </a>
+
+                <a href="profile.html" class="menu-item">
+                    <span class="menu-icon">👤</span>
+                    Account Information
+                </a>
+                
+                <a href="settings.html" class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    Settings
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="Log in.html" class="menu-item logout" onclick="logout()">
+                    <span class="menu-icon">🚪</span>
+                    Sign Out
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for panel -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Settings Content -->
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>Settings</h1>
+        </div>
+
+        <div class="settings-content">
+            <div class="settings-section">
+                <h2>Account Settings</h2>
+                <div class="setting-item">
+    <label>Email Address</label>
+    <div class="setting-content">
+        <input type="email" value="user@email.com" class="setting-input" id="settingsEmail">
+    </div>
+</div>
+
+<div class="setting-item">
+    <label>Password</label>
+    <div class="setting-content">
+        <div class="password-container">
+            <input type="password" value="********" class="setting-input" id="settingsPassword" readonly>
+            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility()" title="Show/Hide Password">
+                <i>👁</i>
+            </button>
+        </div>
+        <div class="password-requirements">
+            <small>Must be at least 8 characters with letters and numbers</small>
+        </div>
+        <button class="change-password-btn" onclick="openChangePassword()">Change Password</button>
+    </div>
+</div>
+                <div class="setting-item">
+                    <label>Phone Number</label>
+                    <div class="setting-content">
+                    <div class="phone-input-wrapper">
+                        <select class="country-code" id="countryCode" onchange="updateCountryCode()" style="width: 140px;">
+                            <option value="+1">🇺🇸 +1 (US)</option>
+                            <option value="+44">🇬🇧 +44 (UK)</option>
+                            <option value="+63">🇵🇭 +63 (PH)</option>
+                            <option value="+61">🇦🇺 +61 (AU)</option>
+                            <option value="+91">🇮🇳 +91 (IN)</option>
+                            <option value="other">Other...</option>
+                        </select>
+                        <input type="tel" class="setting-input" id="settingsPhone" 
+                               placeholder="555-123-4567" style="flex: 1;"
+                               oninput="formatPhoneNumber(this)">
+                    </div>
+                    <div class="phone-format">
+                        <small>Enter your phone number without the country code</small>
+                    </div>
+                </div>
+            </div> <!-- CLOSE settings-section -->
+
+            <div class="settings-section">
+                <h2>Preferences</h2>
+                <div class="setting-item toggle">
+                    <label>Email Notifications</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="emailNotifications">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item toggle">
+                    <label>Auto-play next episode</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked id="autoPlay">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>Video Quality</label>
+                    <select class="setting-select" id="videoQuality">
+                        <option>Auto</option>
+                        <option>1080p</option>
+                        <option>720p</option>
+                        <option>480p</option>
+                    </select>
+                </div>
+            </div> <!-- CLOSE settings-section -->
+
+            <div class="settings-section">
+                <h2>Parental Controls</h2>
+                <div class="setting-item">
+                    <label>Content Restriction</label>
+                    <select class="setting-select" id="contentRestriction">
+                        <option>All Maturity Levels</option>
+                        <option>PG and below</option>
+                        <option>PG-13 and below</option>
+                    </select>
+                </div>
+            </div> <!-- CLOSE settings-section -->
+
+            <button class="save-btn" id="saveSettingsBtn">
+                <span class="save-text">Save Changes</span>
+                <div class="save-loader" style="display: none;">
+                    <div class="loader"></div>
+                </div>
+                <div class="save-check" style="display: none;">✓</div>
+            </button>
+        </div> <!-- CLOSE settings-content -->
+    </div> <!-- CLOSE settings-container -->
+
+    <!-- Change Password Modal -->
+    <div class="modal-overlay" id="passwordModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Password</h2>
+                <button class="modal-close" onclick="closeChangePassword()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <div class="modal-password-container">
+                        <input type="password" id="currentPassword" class="modal-input" placeholder="Enter current password">
+                        <button type="button" class="modal-toggle-btn" onclick="toggleModalPassword('currentPassword')" title="Show/Hide">
+                            <i>👁</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="modal-password-container">
+                        <input type="password" id="newPassword" class="modal-input" placeholder="Enter new password" oninput="checkPasswordStrength()">
+                        <button type="button" class="modal-toggle-btn" onclick="toggleModalPassword('newPassword')" title="Show/Hide">
+                            <i>👁</i>
+                        </button>
+                    </div>
+                    <div class="password-strength" id="newPasswordStrength">
+                        <div class="password-strength-meter"></div>
+                    </div>
+                    <div class="password-requirements">
+                        <ul>
+                            <li id="reqLength">✓ At least 8 characters</li>
+                            <li id="reqUpper">✓ One uppercase letter</li>
+                            <li id="reqLower">✓ One lowercase letter</li>
+                            <li id="reqNumber">✓ One number</li>
+                            <li id="reqSpecial">✓ One special character</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <div class="modal-password-container">
+                        <input type="password" id="confirmPassword" class="modal-input" placeholder="Confirm new password" oninput="checkPasswordMatch()">
+                        <button type="button" class="modal-toggle-btn" onclick="toggleModalPassword('confirmPassword')" title="Show/Hide">
+                            <i>👁</i>
+                        </button>
+                    </div>
+                    <div class="password-match" id="passwordMatch"></div>
+                </div>
+                <button class="modal-save-btn" onclick="saveNewPassword()">Save New Password</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings-script.js"></script>
+    <script src="script-page.js"></script>
+    <script src="avatar-manager.js"></script>
+</body>
+</html>

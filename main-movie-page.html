@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamStack - Movie Streaming</title>
+    <link rel="stylesheet" href="main-page.css">
+</head>
+<body>
+    <!-- Header -->
+<div class="main-header">
+    <div class="header-left">
+    <img src="logo.png" alt="StreamStack Logo" class="logo-image">
+    <div class="logo">StreamStack</div>
+</div>
+    
+    <div class="header-center">
+    <div class="search-filter">
+        <div class="search-container">
+            <input type="text" class="search-bar" id="mainSearchInput" placeholder="Search movies...">
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        <div class="filter-icon" onclick="toggleFilterPanel()">☰ Filter</div>
+    </div>
+    
+    <div class="filter-options">
+        <div class="filter-option active">Most Popular</div>
+        <div class="filter-option">Highest Rated</div>
+        <div class="filter-option">New Releases</div>
+    </div>
+</div>
+    
+    <div class="header-controls">
+        <!-- Profile Icon -->
+        <div class="profile-icon" onclick="toggleProfilePanel()">
+            <div class="profile-avatar">U</div>
+        </div>
+    </div>
+</div>
+
+    <!-- Filter Panel -->
+    <div class="filter-panel" id="filterPanel">
+        <div class="filter-header">
+            <h2>Filter Movies</h2>
+            <button class="close-filter" onclick="toggleFilterPanel()">×</button>
+        </div>
+        <div class="genres-container">
+    <h3>Select Genres</h3>
+    <div class="genres-grid">
+        <label class="genre-checkbox">
+            <input type="checkbox" value="action"> Action
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="adventure"> Adventure
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="animation"> Animation
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="biography"> Biography
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="comedy"> Comedy
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="crime"> Crime
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="documentary"> Documentary
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="drama"> Drama
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="family"> Family
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="fantasy"> Fantasy
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="film-noir"> Film-Noir
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="game-show"> Game-Show
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="history"> History
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="horror"> Horror
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="music"> Music
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="musical"> Musical
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="mystery"> Mystery
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="news"> News
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="reality-tv"> Reality-TV
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="romance"> Romance
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="sci-fi"> Sci-Fi
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="short"> Short
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="sport"> Sport
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="talk-show"> Talk-Show
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="thriller"> Thriller
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="war"> War
+        </label>
+        <label class="genre-checkbox">
+            <input type="checkbox" value="western"> Western
+        </label>
+    </div>
+</div>
+        <button class="apply-filter" onclick="applyGenreFilter()">Apply Filter</button>
+    </div>
+
+    <!-- Profile Panel -->
+    <div class="profile-panel" id="profilePanel">
+        <div class="profile-header">
+            <button class="close-profile" onclick="toggleProfilePanel()">×</button>
+            <h2>Account</h2>
+        </div>
+        
+        <div class="profile-content">
+            <div class="user-info">
+    <div class="user-avatar">U</div>
+    <div class="user-details">
+        <h3 class="user-name" id="panelUserName">User Name</h3> <!-- ADD id -->
+        <p class="user-email" id="panelUserEmail">user@email.com</p> <!-- ADD id -->
+    </div>
+</div>
+            
+            <div class="profile-menu">
+                <a href="main-movie-page.html" class="menu-item">
+                    <span class="menu-icon">🏠</span>
+                    Home    
+                </a>
+
+                <a href="watchlist.html" class="menu-item">
+                    <span class="menu-icon">📋</span>
+                    My Watchlist
+                </a>
+
+                <a href="profile.html" class="menu-item">
+                    <span class="menu-icon">👤</span>
+                    Account Information
+                </a>
+                
+                <a href="settings.html" class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    Settings
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="Log in.html" class="menu-item logout">
+                    <span class="menu-icon">🚪</span>
+                    Sign Out
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="movie-title">Movie Title some shi type shi</h1>
+                <p class="movie-description">Description placeholder. Put movie brief description.</p>
+                <div class="movie-meta">
+                    <span class="year">2024</span>
+                    <span class="rating">★ 5/5</span>
+                    <span class="duration">2h 18m</span>
+                </div>
+                <div class="hero-buttons">
+                    <button class="play-btn">▶ Play</button>
+                    <button class="info-btn">ℹ More Info</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie Rows -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Top Movies Today</h2>
+                <div class="section-nav">
+                    <button class="nav-arrow left-arrow" onclick="slideRow(this, -1)">‹</button>
+                    <button class="nav-arrow right-arrow" onclick="slideRow(this, 1)">›</button>
+                </div>
+            </div>
+            <div class="movie-row-container">
+                <div class="movie-row" data-slide="0">
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 1</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 1')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 1', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 1')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 2</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 2')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 2', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 2')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 3</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 3')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 3', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 3')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 4</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 4')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 4', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 4')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 5</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 5')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 5', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 5')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="see-more-card" onclick="seeMore('Top Movies Today')">
+                        <div class="see-more-icon">→</div>
+                        <div class="see-more-text">See More</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional movie rows would go here -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Action Movies</h2>
+                <div class="section-nav">
+                    <button class="nav-arrow left-arrow" onclick="slideRow(this, -1)">‹</button>
+                    <button class="nav-arrow right-arrow" onclick="slideRow(this, 1)">›</button>
+                </div>
+            </div>
+            <div class="movie-row-container">
+                <div class="movie-row" data-slide="0">
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 1</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 1')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 1', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 1')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 2</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 2')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 2', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 2')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 3</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 3')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 3', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 3')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 4</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 4')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 4', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 4')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="netflix-movie-card">
+    <div class="netflix-movie-poster">🎬</div>
+    <div class="netflix-movie-title">Movie 5</div>
+    <div class="netflix-movie-actions">
+        <div class="netflix-action-row">
+            <div class="netflix-main-actions">
+                <button class="netflix-play-btn" onclick="playMovie('Movie 5')">▶</button>
+                <button class="netflix-watchlist-btn" onclick="toggleWatchlist(1, 'Movie 5', this)">+</button>
+            </div>
+            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 5')">ℹ</button>
+        </div>
+        <div class="netflix-movie-info">
+            <div class="netflix-movie-match">98% Match</div>
+            <div class="netflix-movie-genres">Action • Adventure • Sci-Fi</div>
+            <span class="netflix-hd-badge">HD</span>
+        </div>
+    </div>
+</div>
+                    <div class="see-more-card" onclick="seeMore('Action Movies')">
+                        <div class="see-more-icon">→</div>
+                        <div class="see-more-text">See More</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-page.js"></script>
+<script src="avatar-manager.js"></script>
+
+<script>
+    // Check if user is logged in
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'Log in.html';
+    }
+    
+    // Update welcome message with user's actual name
+    document.addEventListener('DOMContentLoaded', function() {
+        const userEmail = localStorage.getItem('userEmail');
+        const userFullName = localStorage.getItem('userFullName') || 'User';
+        
+        console.log('Loading user data:', { userEmail, userFullName });
+        
+        if (userEmail) {
+            // Update profile panel
+            const panelUserName = document.getElementById('panelUserName');
+            const panelUserEmail = document.getElementById('panelUserEmail');
+            
+            if (panelUserName) {
+                panelUserName.textContent = userFullName;
+                console.log('Updated panel name to:', userFullName);
+            }
+            if (panelUserEmail) {
+                panelUserEmail.textContent = userEmail;
+                console.log('Updated panel email to:', userEmail);
+            }
+            
+            // Also update any other .user-name/.user-email elements
+            document.querySelectorAll('.user-name:not(#panelUserName)').forEach(el => {
+                el.textContent = userFullName;
+            });
+            document.querySelectorAll('.user-email:not(#panelUserEmail)').forEach(el => {
+                el.textContent = userEmail;
+            });
+        }
+    });
+</script>
+</script>
+
+</body>
+</html>

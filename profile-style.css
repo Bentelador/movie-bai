@@ -1,0 +1,467 @@
+.profile-container {
+    background-color: #141414;
+    color: white;
+    min-height: 100vh;
+    padding: 100px 50px 20px 50px; /* Added top padding for header */
+    margin-top: 0;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.back-button {
+    color: #e50914;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.profile-header h1 {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.profile-info {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.avatar-section {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.profile-avatar-large {
+    width: 120px;
+    height: 120px;
+    background: #e50914;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.change-avatar-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.change-avatar-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.profile-details {
+    flex: 1;
+    min-width: 300px; /* Ensure details don't get too small */
+}
+
+.detail-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.detail-item label {
+    display: block;
+    color: #8c8c8c;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.detail-item p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.premium-badge {
+    background: #e50914;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.profile-stats {
+    margin-bottom: 40px;
+}
+
+.profile-stats h2 {
+    margin-bottom: 20px;
+    color: #e50914;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e50914;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #8c8c8c;
+    font-size: 0.9rem;
+}
+
+.recent-activity h2 {
+    margin-bottom: 20px;
+    color: #e50914;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.activity-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.activity-poster {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #e50914, #b81d24);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.activity-info {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.activity-time {
+    color: #8c8c8c;
+    font-size: 0.9rem;
+}
+
+/* Make body scrollable */
+body {
+    overflow-y: auto;
+    height: 125vh;
+}
+
+.logo-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+/* Avatar Container */
+.avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e50914;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.avatar-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+}
+
+.avatar-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.avatar-container:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.camera-icon {
+    font-size: 2rem;
+    color: white;
+}
+
+/* Avatar Options */
+.avatar-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.change-avatar-btn, .crop-avatar-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.change-avatar-btn:hover, .crop-avatar-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: #e50914;
+}
+
+.crop-instructions {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 3px solid #e50914;
+}
+
+.crop-instructions p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+    color: #8c8c8c;
+}
+
+/* Crop Modal */
+.crop-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.crop-modal.active {
+    display: flex;
+}
+
+.crop-content {
+    background: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.crop-area {
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #e50914;
+    border-radius: 50%;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+#cropImage {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.crop-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.crop-apply, .crop-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.crop-apply {
+    background: #e50914;
+    color: white;
+}
+
+.crop-cancel {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* Hide the file input completely */
+.avatar-upload {
+    display: none;
+}
+
+/* Avatar Container */
+.avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e50914;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.avatar-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+}
+
+.avatar-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #333; /* Fallback color */
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.avatar-container:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.camera-icon {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.change-text {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Avatar Options */
+.avatar-options {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.change-avatar-btn {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.change-avatar-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: #e50914;
+}
+
+.crop-instructions {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 3px solid #e50914;
+}
+
+.crop-instructions p {
+    margin: 5px 0;
+    font-size: 0.8rem;
+    color: #8c8c8c;
+}

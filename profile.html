@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - StreamStack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile-style.css">
+    <link rel="stylesheet" href="main-page.css">
+</head>
+<body>
+    <!-- Same header as main page -->
+    <div class="main-header">
+        <div class="header-left">
+            <img src="logo.png" alt="StreamStack Logo" class="logo-image">
+            <div class="logo">StreamStack</div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-bar" id="mainSearchInput" placeholder="Search movies...">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+        </div> <!-- CLOSE header-center -->
+        
+        <div class="header-controls">
+            <!-- Profile Icon -->
+            <div class="profile-icon" onclick="toggleProfilePanel()">
+                <div class="profile-avatar">U</div>
+            </div>
+        </div>
+    </div> <!-- CLOSE main-header -->
+
+    <!-- Same profile panel -->
+    <div class="profile-panel" id="profilePanel">
+        <div class="profile-header">
+            <button class="close-profile" onclick="toggleProfilePanel()">×</button>
+            <h2>Account</h2>
+        </div>
+        
+        <div class="profile-content">
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <div class="user-details">
+                    <h3 class="user-name" id="panelUserName">User Name</h3>
+                    <p class="user-email" id="panelUserEmail">user@email.com</p>
+                </div>
+            </div>
+            
+            <div class="profile-menu">
+                <a href="main-movie-page.html" class="menu-item">
+                    <span class="menu-icon">🏠</span>
+                    Home    
+                </a>
+
+                <a href="watchlist.html" class="menu-item">
+                    <span class="menu-icon">📋</span>
+                    My Watchlist
+                </a>
+
+                <a href="profile.html" class="menu-item">
+                    <span class="menu-icon">👤</span>
+                    Account Information
+                </a>
+                
+                <a href="settings.html" class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    Settings
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="Log in.html" class="menu-item logout" onclick="logout()">
+                    <span class="menu-icon">🚪</span>
+                    Sign Out
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Profile Content -->
+    <div class="profile-container">
+        <div class="profile-content">
+            <div class="profile-info">
+                <div class="avatar-section">
+                    <div class="avatar-container">
+                        <img src="" alt="Profile Avatar" class="avatar-preview" id="avatarPreview">
+                        <div class="avatar-overlay">
+                            <span class="camera-icon">📷</span>
+                            <span class="change-text">Change Photo</span>
+                        </div>
+                        <input type="file" id="avatarUpload" class="avatar-upload" accept="image/*">
+                    </div>
+                    <div class="avatar-options">
+                        <button class="change-avatar-btn" onclick="openCamera()">Take Photo</button>
+                    </div>
+                    <div class="crop-instructions">
+                        <p>• Click the circle to choose a photo</p>
+                        <p>• Image will be cropped to circle automatically</p>
+                        <p>• Recommended: Square images work best</p>
+                    </div>
+                </div>
+                
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <label>Full Name</label>
+                        <p id="userFullName">User Name</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Email</label>
+                        <p id="userEmail">user@email.com</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Member Since</label>
+                        <p>January 2024</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Subscription</label>
+                        <p class="premium-badge">Member</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <h2>My Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="moviesLiked">0</div>
+                        <div class="stat-label">Movies Liked</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="moviesWatched">0</div>
+                        <div class="stat-label">Movies Watched</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="inWatchlist">0</div>
+                        <div class="stat-label">In Watchlist</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Recently Watched</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-poster">🎬</div>
+                        <div class="activity-info">
+                            <div class="activity-title">Movie Title 1</div>
+                            <div class="activity-time">Watched 2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-poster">🎬</div>
+                        <div class="activity-info">
+                            <div class="activity-title">Movie Title 2</div>
+                            <div class="activity-time">Watched 1 day ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="profile-script.js"></script>
+    <script src="script-page.js"></script>
+    <script src="avatar-manager.js"></script>
+</body>
+</html>

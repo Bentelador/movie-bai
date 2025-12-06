@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamStack - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">StreamStack</div>
+        </div>
+        
+        <div class="login-box">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="Username">Username</label>
+                    <input type="text" id="Username" name="Username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <!-- Password field -->
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="password-container">
+                        <input type="password" id="signupPassword" placeholder="Create a password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('signupPassword')">
+                            Show
+                        </button>
+                    </div>
+                    <div class="password-requirements">
+                        <ul>
+                            <li>At least 8 characters</li>
+                            <li>One uppercase letter</li>
+                            <li>One lowercase letter</li>
+                            <li>One number</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Confirm Password field -->
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmSignupPassword" placeholder="Confirm password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('confirmSignupPassword')">
+                            Show
+                        </button>
+                    </div>
+                    <div class="password-match" id="passwordMatch"></div>
+                </div>
+                
+                <button type="submit" class="login-btn">Sign Up</button>
+            </form>
+            
+            <div class="signup-link">
+                <p>Already have an account? <a href="Log in.html">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // Simple password toggle function
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const button = event.target;
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = 'Hide';
+        } else {
+            input.type = 'password';
+            button.textContent = 'Show';
+        }
+    }
+    
+    // Check password match
+    function checkPassword() {
+        const password = document.getElementById('signupPassword').value;
+        const confirm = document.getElementById('confirmSignupPassword').value;
+        const matchIndicator = document.getElementById('passwordMatch');
+        
+        if (!matchIndicator) return;
+        
+        if (!confirm) {
+            matchIndicator.textContent = '';
+            matchIndicator.className = 'password-match';
+            return false;
+        }
+        
+        if (password === confirm) {
+            matchIndicator.textContent = '✓ Passwords match';
+            matchIndicator.className = 'password-match valid';
+            return true;
+        } else {
+            matchIndicator.textContent = '✗ Passwords do not match';
+            matchIndicator.className = 'password-match invalid';
+            return false;
+        }
+    }
+    
+    // Update confirm password field to check on input
+    document.getElementById('confirmSignupPassword').addEventListener('input', checkPassword);
+    
+    // Handle signup form submission
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const Username = document.getElementById('Username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('signupPassword').value;
+        const confirmPassword = document.getElementById('confirmSignupPassword').value;
+        
+        // Simple validation
+        if (!Username || !email || !password || !confirmPassword) {
+            alert('Please fill in all fields');
+            return;
+        }
+        
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+        
+        if (password.length < 8) {
+            alert('Password must be at least 8 characters');
+            return;
+        }
+        
+        // Store user data
+        localStorage.setItem('userFullName', Username);
+        localStorage.setItem('userEmail', email);
+        // DON'T set isLoggedIn here - user needs to login first
+        // localStorage.setItem('isLoggedIn', 'true'); // REMOVE THIS LINE
+        
+        alert('Account created successfully! Please sign in.');
+        window.location.href = 'Log in.html'; // Redirect to LOGIN page
+    });
+    </script>
+
+</body>
+</html>
